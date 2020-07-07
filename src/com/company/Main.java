@@ -8,20 +8,22 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        Integer a = null , b = null ,action = null , result;
+        double a  = 0 , b = 0 , result;
+
+        Integer action = null;
 
         Operationable operation;
 
         while(true){
             try {
-                System.out.println("Enter x: ");
-                a = sc.nextInt();
-                System.out.println("Enter y: ");
-                b = sc.nextInt();
+                System.out.print("Enter x - ");
+                a = sc.nextDouble();
+                System.out.print("Enter y - ");
+                b = sc.nextDouble();
             }catch (Exception e){
                 System.out.println("Wrong symbol! Only numbers...");
             }
-            menu();
+            menu(a, b);
             try {
                  action = sc.nextInt();
             }catch (Exception e){
@@ -29,21 +31,21 @@ public class Main {
             }
                 switch (action){
                     case 1:
-                        operation = (x,y)->x+y;
+                        operation = (x, y) -> x + y;
                          result = operation.calculate(a , b);
                         System.out.println("x + y = " + result);
                         lines();
                         break;
 
                      case 2:
-                         operation = (x,y)->x-y;
+                         operation = (x, y) -> x - y;
                           result = operation.calculate(a , b);
                          System.out.println("x - y = " + result);
                          lines();
                         break;
 
                      case 3:
-                         operation = (x,y)->x*y;
+                         operation = (x, y) -> x * y;
                          result = operation.calculate(a , b);
                          System.out.println("x * y = " + result);
                          lines();
@@ -70,8 +72,8 @@ public class Main {
         }
     }
 
-    static void menu(){
-        System.out.println("Enter action: \n 1. Plus. \n 2. Minus. \n 3. Multiply. \n 4. Devide. \n 0. To exit.");
+    static void menu(double a, double b){
+        System.out.println("Yours numbers: ("+ a +" , "+ b +")\nEnter action: \n 1. Plus. \n 2. Minus. \n 3. Multiply. \n 4. Devide. \n 0. To exit.");
     }
 
     static void lines(){
@@ -79,9 +81,9 @@ public class Main {
     }
 
     interface Operationable{
-        int calculate(Integer x, Integer y);
+        double calculate(double x, double y);
     }
-    
+
 }
 
 
